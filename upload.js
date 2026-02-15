@@ -143,7 +143,7 @@ async function uploadFile(file, path, token, owner, repo, branch) {
             `https://api.github.com/repos/${owner}/${repo}/contents/${path}?ref=${branch}`,
             {
                 headers: {
-                    'Authorization': `token ${token}`,
+                    'Authorization': `Bearer ${token}`,
                     'Accept': 'application/vnd.github.v3+json'
                 }
             }
@@ -173,7 +173,7 @@ async function uploadFile(file, path, token, owner, repo, branch) {
         {
             method: 'PUT',
             headers: {
-                'Authorization': `token ${token}`,
+                'Authorization': `Bearer ${token}`,
                 'Accept': 'application/vnd.github.v3+json',
                 'Content-Type': 'application/json'
             },
@@ -210,7 +210,7 @@ function updateProgress(percentage, text) {
 
 // Show status message
 function showStatus(message, type) {
-    statusMessage.innerHTML = message;
+    statusMessage.textContent = message;
     statusMessage.className = 'status-message status-' + type;
     statusMessage.style.display = 'block';
 }
